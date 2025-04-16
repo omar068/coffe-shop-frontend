@@ -2,7 +2,7 @@
 import Image from "next/image";
 export default function FooterNavigationBar() {
   return (
-    <div className="sticky flex shadow-md py-4">
+    <div className="sticky bottom-0 flex py-2 bg-[#040210] w-100">
       {/* Calendario */}
       <div className="grid grid-cols-3 gap-4">
 

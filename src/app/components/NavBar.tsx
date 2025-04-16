@@ -52,9 +52,9 @@ export default function Navbar() {
     }, [isMenuOpen])
 
     return (
-        <div className="relative">
+        <div className="sticky top-0">
             {/* Main Navbar - Dark theme */}
-            <div className="w-full navbar text-white">
+            <div className="w-full bg-[#040210] text-white">
                 <div className="flex items-center justify-between px-4 py-3">
                     {/* Menu button - on the left */}
                     <button
@@ -115,27 +115,17 @@ export default function Navbar() {
                     }`}
             >
                 <div className="p-4 border-b border-gray-200 flex justify-between items-center">
-                    <span className="font-semibold text-gray-900">Menu</span>
+                    <span className="font-semibold text-white">Menu</span>
                 </div>
                 <div className="p-4">
                     <ul className="space-y-2">
                         <li>
-                            <Link href="#" className="block py-2 px-3 rounded-md hover:bg-gray-100 text-gray-900 transition-colors">
+                            <Link href="/" className="block py-2 px-3 rounded-md hover:bg-gray-100 text-white transition-colors">
                                 Home
                             </Link>
                         </li>
                         <li>
-                            <button
-                                onClick={toggleResources}
-                                className="flex w-full items-center justify-between py-2 px-3 rounded-md hover:bg-gray-100 text-gray-900 transition-colors"
-                            >
-                                <span>Resources</span>
-                            </button>
-
-                            
-                        </li>
-                        <li>
-                            <Link href="#" className="block py-2 px-3 rounded-md hover:bg-gray-100 text-gray-900 transition-colors">
+                            <Link href="#" className="block py-2 px-3 rounded-md hover:bg-gray-100 text-white transition-colors">
                                 Contact
                             </Link>
                         </li>

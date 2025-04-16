@@ -15,10 +15,11 @@ export default function Alert() {
                         />
                     </div>
 
-                    <div>
-                        <p className="alert-common alert-title">Happy Hour</p>
-                        <p className="alert-common alert-text">15:00 - 17:00 hrs MEX</p>
+                    <div className="text-[#2D3748] text-[16px]">
+                        <p className="font-bold">Happy Hour</p>
+                        <p className="font-normal">15:00 - 17:00 hrs MEX</p>
                     </div>
+
                 </div>
             </div></>
     )

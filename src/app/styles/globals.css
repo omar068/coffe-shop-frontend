@@ -6,12 +6,6 @@
   
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -26,72 +20,29 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.navbar {
-  background-color: #040210;
-}
 
 
-/* Clase base para los estilos compartidos */
-.alert-common {
-  color: rgba(45, 55, 72, 1);
-  font-size: 16px;
-  /* Cambia a `font-size` porque `size` no es válido en CSS */
-}
-
-/* Estilo específico para el título */
-.alert-title {
-  font-weight: 700;
-}
-
-/* Estilo específico para el texto */
-.alert-text {
-  font-weight: 400;
-}
-
-.title-home {
-  font-size: '32px';
-  font-weight: '700'
-}
-
-.button {
+.button-card{
+  font-weight: 600;
   height: 32px;
   width: 244px;
-  font-weight: 600;
-  background: linear-gradient(to right, #3540E8, #E41AD6);
 }
 
-.card {
-  width: 328;
-  height: 191;
-  gap: 16px;
-  border-radius: 8px;
-  padding: 16px;
-  margin-left: 12px;
-  background: #13132D;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
-
+.button-reservation{
+  font-weight: 700;
+  width: 100%;
+  height: 48px;
 }
 
-.img-circle {
-  /* Mask group */
 
-  width: 71px;
-  height: 71px;
-  border-radius: 100%;
-
-  /* Inside auto layout */
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-
-}
 
 /* Ocultar barra de desplazamiento */
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;   /* Oculta la barra de desplazamiento en navegadores basados en WebKit */
+  display: none;   
 }
 
 .scrollbar-hide {
   scrollbar-width: none; /* Oculta la barra de desplazamiento en Firefox */
 }
+
+

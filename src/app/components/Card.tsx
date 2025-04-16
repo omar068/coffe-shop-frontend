@@ -1,16 +1,19 @@
 import React from 'react';
 import FullButton from './FullButton';
 import Image from 'next/image';
+import { Shop } from '../interfaces/shop.interface';
+import Link from 'next/link';
 
-export default function Card() {
+export default function Card({ name, address, phone, id }: Shop) {
+
   return (
-    <div className="card">
-      <h2 className="text-xl font-bold h-[24px] mb-4">Bar Nim</h2>
+    <div className="w-[328px] h-[191px] gap-[16px] rounded-[8px] p-[16px] ml-[8px] bg-[#13132D]">
+      <h2 className="text-xl font-bold h-[24px] mb-4 truncate">{name}</h2>
       <div className="flex align-items-center space-x-1 gap-2">
         <img
           src="https://tienda.cristar.com.co/wp-content/uploads/2024/07/8cef3ee5-nadir_dk_6464-md-1.jpg"
           alt="Bar Nim Interior"
-          className="img-circle"
+          className="w-[71px] h-[71px] rounded-full flex-none order-0 flex-grow-0"
         />
         <div style={{ width: '224px', height: '58px' }}>
           <div className="text-sm flex space-x-3 mb-4" style={{ width : '192px', height: '24px' }}>
@@ -21,8 +24,7 @@ export default function Card() {
               width={24}
               height={24}
             />
-            <div>
-            Havre 73, Juárez, Cuauhtémoc</div>
+            <div className='truncate'>{address || "No disponible"}</div>
           </div>
           <div className='text-sm flex space-x-4'>
           <Image
@@ -32,11 +34,13 @@ export default function Card() {
               width={18}
               height={18}
             />
-          <p>4235-876699</p>
+          <p>{phone || "No disponible"}</p>
           </div>
         </div>
       </div>
-      <FullButton />
+      <Link href={`/details/${id}`}>
+      <FullButton id="button-card" content="Ver mas" />
+      </Link>
     </div>
   );
 };
