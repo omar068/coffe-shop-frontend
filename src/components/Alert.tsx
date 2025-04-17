@@ -14,7 +14,6 @@ export default function Alert() {
                             height={24}
                         />
                     </div>
-
                     <div className="text-[#2D3748] text-[16px]">
                         <p className="font-bold">Happy Hour</p>
                         <p className="font-normal">15:00 - 17:00 hrs MEX</p>

@@ -1,23 +1,15 @@
 'use client';
-import Carrusel from "@/app/components/Carrusel";
+import Carrusel from "@/components/Carrusel";
 import { COMMENTS } from "@/constants/comments";
+import { PHOTOS } from "@/constants/photoLinkArray";
 import Image from "next/image";
-import Comment from '../../components/Comment';
-import FullButton from '../../components/FullButton';
-import OutLineButton from "@/app/components/OutLineButton";
-import FooterNavigationBar from "@/app/components/FooterNavigationBar";
+import Comment from '../../../components/Comment';
+import FullButton from '../../../components/FullButton';
+import OutLineButton from "@/components/OutLineButton";
+import FooterNavigationBar from "@/components/FooterNavigationBar";
 import { useEffect, useState } from "react";
-const photoArray = [
-    "https://tienda.cristar.com.co/wp-content/uploads/2024/07/8cef3ee5-nadir_dk_6464-md-1.jpg",
-    "https://tienda.cristar.com.co/wp-content/uploads/2024/07/8cef3ee5-nadir_dk_6464-md-1.jpg",
-    "https://tienda.cristar.com.co/wp-content/uploads/2024/07/8cef3ee5-nadir_dk_6464-md-1.jpg",
-    "https://tienda.cristar.com.co/wp-content/uploads/2024/07/8cef3ee5-nadir_dk_6464-md-1.jpg",
-    "https://tienda.cristar.com.co/wp-content/uploads/2024/07/8cef3ee5-nadir_dk_6464-md-1.jpg",
-];
 
-
-
-function ClientComponent({ data }: { data: { id: string; name: string; address: string; phone: string } }) {
+export default function ClientComponent({ data }: { data: { id: string; name: string; address: string; phone: string } }) {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
@@ -60,7 +52,7 @@ function ClientComponent({ data }: { data: { id: string; name: string; address: 
                 </div>
             </div>
             <div className="mb-8">
-                <Carrusel urls={photoArray} />
+                <Carrusel urls={PHOTOS} />
             </div>
             <div className="mb-8" style={{ fontSize: '24px', fontWeight: '600' }}>Opiniones</div>
             {COMMENTS.map((comment, index) => (
@@ -69,13 +61,13 @@ function ClientComponent({ data }: { data: { id: string; name: string; address: 
 
             <div className="mb-6">
                 <FullButton id="button-reservation" content="Reservar mesa" />
-                <OutLineButton />
+                <OutLineButton bg="bg-[#010316]">Opciones de transporte</OutLineButton>
             </div>
-            <div className="absolute bottom-0">
+            <div className="">
                 {isMobile ? (<FooterNavigationBar/>) : ('')}
                 </div>
         </div>
     );
 }
 
-export default ClientComponent;
+

@@ -1,57 +1,46 @@
-import { transformData } from "@/utils/transformData";
+import { transformData } from '@/utils/transformData';
+import axios from 'axios';
 
+
+const api = axios.create({
+  baseURL: 'https://api.openbrewerydb.org/v1',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+/**
+ * Servicio para obtener un elemento por ID
+ */
 export async function fetchItemById(id: string) {
-    const response = await fetch(`https://api.openbrewerydb.org/v1/breweries/${id}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        // Agrega encabezados adicionales aquí si es necesario (por ejemplo, Authorization)
-      },
-      cache: 'no-store',
-    });
-  
-    if (!response.ok) {
-      throw new Error(`Error ${response.status}: Failed to fetch item with ID ${id} - ${response.statusText}`);
+  try {
+    const response = await api.get(`/breweries/${id}`);
+    return transformData(response.data); // Usa tu función de transformación
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new Error(`Error ${error.response?.status}: ${error.response?.data?.message || 'Failed to fetch item by ID'}`);
+    } else {
+      throw new Error('An unknown error occurred');
     }
-    
-  
-    const data = await response.json();
-    const dataClean = transformData(data);
-    return dataClean;
   }
+}
 
-  export async function fetchItemByState(id: string) {
-    const response = await fetch(`https://api.openbrewerydb.org/v1/breweries?by_state=California`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        // Agrega encabezados adicionales aquí si es necesario (por ejemplo, Authorization)
-      },
-    });
-  
-    if (!response.ok) {
-      throw new Error(`Failed to fetch item with ID ${id}: ${response.statusText}`);
-    }
-  
-    const data = await response.json();
-    return data.map((item: any) =>({ id: item.id, name: item.name, address: item.address_1, phone: item.phone  }));
-  }
-  
-  export async function fetchAllItems() {
-    const response = await fetch(`https://api.openbrewerydb.org/v1/breweries?per_page=200`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  
-    if (!response.ok) {
-      throw new Error(`Failed to fetch items: ${response.statusText}`);
-    }
-  
-    const data = await response.json();
-    const allData = data.map((item: any) => transformData(item));
-    const filteredData = data.filter((item: any) => item.state === "California");
+
+/**
+ * Servicio para obtener todos los elementos
+ */
+export async function fetchAllItems() {
+  try {
+    const response = await api.get(`/breweries`, { params: { per_page: 200 } });
+    const allData = response.data.map((item: any) => transformData(item));
+    const filteredData = response.data.filter((item: any) => item.state === 'California');
     const dataByState = filteredData.map((item: any) => transformData(item));
     return [allData, dataByState];
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new Error(`Error ${error.response?.status}: ${error.response?.data?.message || 'Failed to fetch all items'}`);
+    } else {
+      throw new Error('An unknown error occurred');
+    }
   }
+}
