@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import Carrusel from '../Carrusel'; // Ajusta la ruta si es necesario
-import { Shop } from '../../interfaces/shop.interface'; // Ajusta la ruta si es necesario
+import Carrusel from '../Carrusel';
+import { Shop } from '../../interfaces/shop.interface';
 
 describe('Carousel Component', () => {
   const mockShops: Shop[] = [
@@ -15,19 +15,15 @@ describe('Carousel Component', () => {
 
   test('should render shop cards when coffe_shops prop is provided', () => {
     render(<Carrusel coffe_shops={mockShops} urls={[]} />);
-
-    // Verifica que el número correcto de elementos Card se renderiza
     expect(screen.getAllByRole('article')).toHaveLength(mockShops.length);
   });
 
   test('should render images when urls prop is provided', () => {
     render(<Carrusel coffe_shops={[]} urls={mockUrls} />);
 
-    // Verifica que el número correcto de imágenes se renderiza
     const images = screen.getAllByRole('img');
     expect(images).toHaveLength(mockUrls.length);
 
-    // Verifica que las imágenes tienen la URL correcta
     images.forEach((image, index) => {
       expect(image).toHaveAttribute('src', mockUrls[index]);
     });
@@ -36,13 +32,10 @@ describe('Carousel Component', () => {
   test('should handle scroll event', () => {
     render(<Carrusel coffe_shops={mockShops} urls={mockUrls} />);
 
-    const carouselContainer = screen.getByRole('list'); // Verifica el contenedor del carrusel (es un contenedor de tipo lista)
+    const carouselContainer = screen.getByRole('list');
     const initialScrollLeft = carouselContainer.scrollLeft;
 
-    // Simula un evento de desplazamiento con el ratón
     fireEvent.wheel(carouselContainer, { deltaY: 100 });
-
-    // Verifica que el scrollLeft ha cambiado, indicando que el desplazamiento ocurrió
     expect(carouselContainer.scrollLeft).toBeGreaterThan(initialScrollLeft);
   });
 });

@@ -1,10 +1,9 @@
-
 import { render, screen, fireEvent } from '@testing-library/react';
 import Navbar from '../NavBar';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 
-// Mocks
+
 jest.mock('js-cookie', () => ({
   remove: jest.fn(),
 }));

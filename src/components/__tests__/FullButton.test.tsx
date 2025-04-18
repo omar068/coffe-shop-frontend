@@ -1,4 +1,3 @@
-// src/components/__tests__/FullButton.test.tsx
 import { render, screen } from '@testing-library/react';
 import FullButton from '../FullButton';
 
