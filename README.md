@@ -39,6 +39,8 @@ npm install
 ```bash
 npm run dev
 ```
+El proyecto estara corriendo en: http://localhost:3000
+
 ### Pruebas unitarias
 Con el comando: 
 ```bash

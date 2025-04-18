@@ -1,12 +1,12 @@
 'use client';
-import Carrusel from "@/components/Carrusel";
+import Carrusel from "../../../components/Carrusel";
 import { COMMENTS } from "@/constants/comments";
 import { PHOTOS } from "@/constants/photoLinkArray";
 import Image from "next/image";
 import Comment from '../../../components/Comment';
 import FullButton from '../../../components/FullButton';
-import OutLineButton from "@/components/OutLineButton";
-import FooterNavigationBar from "@/components/FooterNavigationBar";
+import OutLineButton from "../../../components/OutLineButton";
+import FooterNavigationBar from "../../../components/FooterNavigationBar";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { register } from '@/services/authService';
-import OutLineButton from '@/components/OutLineButton';
+import OutLineButton from '../../components/OutLineButton';
 import FullButton from '../../components/FullButton';
 
 export default function ClientRegisterForm() {

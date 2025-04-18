@@ -3,7 +3,7 @@ import React from 'react';
 import Card from './Card';
 import { Shop } from '../interfaces/shop.interface';
 
-export default function Carousel({ coffe_shops, urls }: { coffe_shops?: Shop[], urls?: string[] }) {
+export default function Carrusel({ coffe_shops, urls }: { coffe_shops?: Shop[], urls?: string[] }) {
   const handleScroll = (event: any) => {
     event.preventDefault();
     const container = event.currentTarget;

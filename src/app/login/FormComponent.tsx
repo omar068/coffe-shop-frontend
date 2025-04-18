@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { login } from '@/services/authService';
 import Cookies from 'js-cookie';
-import OutLineButton from '@/components/OutLineButton';
-import FullButton from '@/components/FullButton';
-import Link from 'next/link';
+import OutLineButton from '../../components/OutLineButton';
+import FullButton from '../../components/FullButton';
+
 
 export default function FormComponent() {
   const [username, setUsername] = useState('');
