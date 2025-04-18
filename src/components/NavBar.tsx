@@ -108,7 +108,7 @@ export default function Navbar() {
         <div className="p-4">
           <ul className="space-y-2">
             <li>
-              <Link href="/" className="block py-2 px-3 rounded-md hover:bg-gray-100 text-white transition-colors">
+              <Link href="/" onClick={() => setIsMenuOpen(false)} className="block py-2 px-3 rounded-md hover:bg-gray-100 text-white transition-colors">
                 Home
               </Link>
             </li>

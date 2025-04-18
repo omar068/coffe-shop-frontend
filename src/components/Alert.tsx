@@ -9,7 +9,7 @@ export default function Alert() {
                         <Image
                             className=""
                             src="/alert.svg"
-                            alt="Vercel logomark"
+                            alt="Alert log"
                             width={24}
                             height={24}
                         />

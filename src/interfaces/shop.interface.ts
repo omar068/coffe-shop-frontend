@@ -1,6 +1,6 @@
 export interface Shop {
     id: number,
     name: string;
-    address: string;
-    phone: string;
+    address: string | null;
+    phone: string | null;
   }

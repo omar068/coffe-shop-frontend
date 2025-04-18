@@ -11,13 +11,13 @@ export default function Carousel({ coffe_shops, urls }: { coffe_shops?: Shop[], 
   };
 
   return (
-    <div className="flex overflow-x-scroll scrollbar-hide ml-1" onWheel={handleScroll}>
+    <div className="flex overflow-x-scroll scrollbar-hide ml-1" onWheel={handleScroll} role='list'>
 
       {coffe_shops?.map((shop: Shop, index: number) => (
         <Card key={index} {...shop}></Card>
       ))}
       {urls?.map((url, index) => (
-        <img className="w-[156px] h-[104px] rounded-[8px] ml-[8px]"
+        <img className="w-[156px] h-[104px] rounded-[8px] ml-[8px]" role='img'
           key={index} src={url} alt="" />
       ))}
 

@@ -8,9 +8,13 @@ import FullButton from '../../../components/FullButton';
 import OutLineButton from "@/components/OutLineButton";
 import FooterNavigationBar from "@/components/FooterNavigationBar";
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 export default function ClientComponent({ data }: { data: { id: string; name: string; address: string; phone: string } }) {
     const [isMobile, setIsMobile] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const router = useRouter();
 
     useEffect(() => {
         const handleResize = () => {
@@ -24,6 +28,16 @@ export default function ClientComponent({ data }: { data: { id: string; name: st
           window.removeEventListener('resize', handleResize);
         };
       }, []);
+    
+      useEffect(() => {
+        const token = Cookies.get("authToken");
+        if (!token) {
+          router.push("/login");
+          return;
+        }
+        setLoading(false);
+      }, [router]);
+    if (loading) return <p>Cargando...</p>;
     return (
         <div className="px-4">
             <div className="pt-5 pb-3">
@@ -59,9 +73,9 @@ export default function ClientComponent({ data }: { data: { id: string; name: st
                 <Comment key={index} comment={comment.comment} user={comment.user} />
             ))}
 
-            <div className="mb-6">
-                <FullButton id="button-reservation" content="Reservar mesa" />
-                <OutLineButton bg="bg-[#010316]">Opciones de transporte</OutLineButton>
+            <div className="mb-6 flex flex-col items-center gap-4">
+                <FullButton className="button-reservation" content="Reservar mesa"/>
+                <OutLineButton bg="bg-[#13132D]">Opciones de transporte</OutLineButton>
             </div>
             <div className="">
                 {isMobile ? (<FooterNavigationBar/>) : ('')}

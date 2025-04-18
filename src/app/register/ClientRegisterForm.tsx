@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { register } from '@/services/authService';
+import OutLineButton from '@/components/OutLineButton';
+import FullButton from '../../components/FullButton';
 
 export default function ClientRegisterForm() {
     const [username, setUsername] = useState('');
@@ -18,7 +20,7 @@ export default function ClientRegisterForm() {
             message: any
         };
         if (response.messageError) {
-            setErrorMessage(response.message || '');
+            setErrorMessage(response.message || 'El usuario ya existe. Por favor, utiliza otro nombre.');
             setSuccessMessage('');
         } else {
             setSuccessMessage('Registro exitoso. Puedes iniciar sesión ahora.');
@@ -47,7 +49,7 @@ export default function ClientRegisterForm() {
                         id="username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
-                        className="w-full p-[10px] border border-[#3540E8] rounded-[8px] bg-[#040210] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3540E8]"
+                        className="w-full p-[10px] border border-[#3540E8] rounded-[8px] bg-[#13132D] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3540E8]"
                         placeholder="Ingresa tu usuario"
                     />
                 </div>
@@ -60,23 +62,14 @@ export default function ClientRegisterForm() {
                         id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="w-full p-[10px] border border-[#3540E8] rounded-[8px] bg-[#040210] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3540E8]"
+                        className="w-full p-[10px] border border-[#3540E8] rounded-[8px] bg-[#13132D] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3540E8]"
                         placeholder="Ingresa tu contraseña"
                     />
                 </div>
-                <button
-                    type="submit"
-                    className="w-full py-3 bg-gradient-to-r from-[#3540E8] to-[#E41AD6] text-white rounded-[8px] hover:shadow-lg transition-all mb-2"
-                >
-                    Registrarse
-                </button>
-                <button
-                    type="button"
-                    className="w-full py-3 bg-[#040210] text-white border border-[#3540E8] rounded-[8px] hover:shadow-lg transition-all"
-                    onClick={() => router.push('/login')}
-                >
-                    Regresar al Login
-                </button>
+                <div className='mb-6 flex flex-col items-center gap-2'>
+                  <FullButton content='Registrarse' type='submit' className='w-full button-reservation' />  
+                <OutLineButton bg="bg-[#13132D]" onClick={() => router.push('/login')}>Regresar al login</OutLineButton>
+                </div>
             </form>
         </div>
     );

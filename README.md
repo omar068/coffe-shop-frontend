@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Proyecto Frontend: Prueba Técnica
 
-## Getting Started
+Este proyecto es el **frontend** de la prueba técnica construida con **Next.js**, **TypeScript** y **Tailwind CSS**. La aplicación consume una API para la autenticación, que está implementada en **NestJS**, y una API externa que proporciona información sobre cervecerías en todo el mundo. Se filtran las cervecerías para mostrar únicamente las de **California**.
 
-First, run the development server:
+## Estructura del Proyecto
+
+Este proyecto sigue una arquitectura basada en componentes modulares, con un enfoque en pruebas unitarias y buenas prácticas de desarrollo.
+
+### Dependencias
+
+- **Next.js**: Framework React para renderizado del lado del servidor (SSR) y generación de páginas estáticas.
+- **TypeScript**: Superset de JavaScript que agrega tipado estático y otras características.
+- **Tailwind CSS**: Framework de CSS utilitario para diseño responsivo y personalización rápida.
+- **Axios**: Cliente HTTP para hacer peticiones a la API.
+- **React Testing Library**: Biblioteca para pruebas de componentes React.
+- **Jest**: Framework para pruebas unitarias.
+
+### Requisitos
+
+- Node.js >= 14.0.0
+- npm >= 6.0.0 o yarn >= 1.22.0
+
+### Instalación
+
+Para instalar las dependencias y configurar el proyecto, sigue los siguientes pasos:
+
+1. **Clona el repositorio**:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+   git clone https://github.com/omar068/coffe-shop-frontend.git
+   cd coffe-shop-frontend
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2.** Instala las dependencias: **
+```bash
+npm install
+```
+3.** Ejecutar el proyecto en un ambiente de desarrollo: **
+```bash
+npm run dev
+```
+### Pruebas unitarias
+Con el comando: 
+```bash
+npm test
+```
+Se ejecutarán todos los tests unitarios, los cuales cubren todos y cada uno de los componentes visuales utilizados en el proyecto.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+###Características
+Autenticación: La aplicación se conecta a una API de autenticación desarrollada en NestJS. Se utiliza JWT para el manejo de tokens y mantener al usuario autenticado.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Conexión con API Externa: El frontend consume una API externa (Open Brewery DB) que proporciona información sobre cervecerías en todo el mundo. Se hace un filtrado de los datos para mostrar solo las cervecerías ubicadas en California.
 
-## Learn More
+Filtros: Los usuarios podrán ver una lista completa de las cervecerías y luego una lista filtrada específicamente para California. El sistema realiza una consulta a la API externa y presenta los resultados en una vista organizada y fácil de usar.
 
-To learn more about Next.js, take a look at the following resources:
+Información: A través de un carrusel, los usuarios pueden navegar por las diferentes cervecerías, ya sea la lista general o la lista filtrada. Además, cuentan con un botón para obtener más información acerca del sitio. Al presionar ese botón, encontrarán la información que ya podían ver en el carrusel, más una serie de fotos y comentarios de cada sitio.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+###Consideraciones
+Cookies: Este proyecto utiliza js-cookie para manejar las cookies del navegador, especialmente para la autenticación del usuario.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Routing: Usamos el router de Next.js para navegar entre las páginas y para manejar redirecciones programáticas.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Imágenes: Se utiliza el componente Image de Next.js para optimizar el rendimiento de las imágenes y cargarlas de manera eficiente, específicamente los iconos proporcionados en el diseño de Figma.
